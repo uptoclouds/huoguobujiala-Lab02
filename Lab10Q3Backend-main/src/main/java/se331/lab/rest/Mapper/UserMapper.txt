@@ -1,0 +1,18 @@
+package se331.lab.rest.Mapper;
+
+
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import se331.lab.rest.entity.User;
+
+@Mapper
+public interface UserMapper {
+    //查询
+    @Select("select * from users where username = #{uname}")
+    User findByUser(String uname);
+    //新增
+    @Insert("insert into users(username, password)" +"values  (#{uname},#{psw})")
+    void add(String uname, String psw);
+}

@@ -1,0 +1,25 @@
+package se331.lab.rest.service;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import se331.lab.rest.Mapper.UserMapper;
+import se331.lab.rest.entity.User;
+
+@Service
+public class UserServiceimpl implements UserService {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public User findByUser(String uname) {
+        User u = userMapper.findByUser(uname);
+        return u;
+    }
+
+    @Override
+    public void register(String uname, String psw) {
+        userMapper.add(uname,psw);
+    }
+}
